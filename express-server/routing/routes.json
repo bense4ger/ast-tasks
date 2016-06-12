@@ -19,6 +19,11 @@
             "method": "patch",
             "pattern": "/thing/:id",
             "handler": "updateHandler"
+        },
+        {
+            "method": "get",
+            "pattern": "/error",
+            "handler": "errorHandler"
         }
     ]
 }

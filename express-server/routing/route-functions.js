@@ -90,5 +90,8 @@ module.exports = {
             res.sendStatus(400);
         }
         next();
+    },
+    errorHandler: (req, res, next) => {
+        throw new Error('This will always happen');
     }
 }

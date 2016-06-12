@@ -1,8 +1,11 @@
 "use strict";
 const express = require('express');
 const bodyParser = require('body-parser');
+const methodOverride = require('method-override');
 const Routes = require('./routing/routes');
 const logger = require('./middleware/logger');
+const errHandler = require('./middleware/error-handler');
+
 /**
  * @function bootstrapExpress
  * @returns {Express}
@@ -16,6 +19,8 @@ const bootstrapExpress = () => {
     let routeConfig = new Routes();
     routeConfig.config(app);
     
+    app.use(methodOverride());
+    app.use(errHandler);
     return app;
 }
 

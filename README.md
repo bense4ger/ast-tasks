@@ -39,8 +39,7 @@ The `id` parameter should be numeric (note it is not the _id field) and needs to
 * DELETE
 
 
-The db class assumes a connection to a mongo instance running on localhost (not in a container) and a database called ast.  
-Use the environment variable `CONNECTION_STRING` to connect to a different database.
+The db class assumes a connection to a mongo instance running on localhost (not in a container) and a database called ast.  Use the environment variable `CONNECTION_STRING` to connect to a different database.
 ### Task 9
 `localhost:8080/home/os`
 ### Task 10

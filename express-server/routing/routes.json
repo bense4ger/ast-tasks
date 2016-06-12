@@ -44,6 +44,11 @@
             "method": "get",
             "pattern": "/os",
             "handler": "osInfoHandler"
+        },
+        {
+            "method": "get",
+            "pattern": "/async/:type",
+            "handler": "asyncHandler"
         }
     ]
 }

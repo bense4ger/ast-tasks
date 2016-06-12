@@ -2,6 +2,7 @@
 const _ = require('underscore');
 const ThingService = require('../services/thing-service');
 const osInfo = require('../logic/os-info');
+const async = require('../logic/async');
 
 const service = new ThingService();
 
@@ -162,5 +163,26 @@ module.exports = {
         res.send(osInfo());
         res.end()
         next();
+    },
+    asyncHandler: (req, res, next) => {
+        if(req.params.type){
+            switch(req.params.type){
+                case 'callback':
+                    let cb = () => { console.log('Request complete'); };
+                    async.callback(res, cb);
+                    break;
+                case 'promise':
+                    async.promise(res).then((r) => { console.log('Request complete');} );
+                    break;
+                default:
+                    res.sendStatus(400);
+                    res.end();
+                    next();
+            }
+        }
+        else{
+            res.sendStatus(400);
+            res.end();
+        }
     }
 }

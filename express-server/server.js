@@ -1,5 +1,6 @@
 "use strict";
 const express = require('express');
+const bodyParser = require('body-parser');
 const Routes = require('./routing/routes');
 const logger = require('./middleware/logger');
 /**
@@ -9,8 +10,9 @@ const logger = require('./middleware/logger');
  */
 const bootstrapExpress = () => {
     let app = express();
+    app.use(bodyParser.json());
     app.use(logger);
-    
+
     let routeConfig = new Routes();
     routeConfig.config(app);
     

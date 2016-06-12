@@ -1,3 +1,24 @@
 {
-    "routes" : []
+    "routes" : [
+        {
+            "method": "get",
+            "pattern": "/thing/:id",
+            "handler": "getHandler"
+        },
+        {
+            "method": "post",
+            "pattern": "/thing",
+            "handler": "postHandler"
+        },
+        {
+            "method": "put",
+            "pattern": "/thing/:id",
+            "handler": "createHandler"
+        }, 
+        {
+            "method": "patch",
+            "pattern": "/thing/:id",
+            "handler": "updateHandler"
+        }
+    ]
 }

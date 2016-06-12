@@ -1,0 +1,24 @@
+{
+  "name": "ast-tasks",
+  "version": "1.0.0",
+  "description": "There are several branches, each covering a number of the tasks.",
+  "main": "index.js",
+  "dependencies": {
+    "gulp": "^3.9.1",
+    "gulp-rename": "^1.2.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bense4ger/ast-tasks.git"
+  },
+  "author": "Ben Seager",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bense4ger/ast-tasks/issues"
+  },
+  "homepage": "https://github.com/bense4ger/ast-tasks#readme"
+}

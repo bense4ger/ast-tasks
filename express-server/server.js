@@ -1,6 +1,7 @@
 "use strict";
 const express = require('express');
 const Routes = require('./routing/routes');
+const logger = require('./middleware/logger');
 /**
  * @function bootstrapExpress
  * @returns {Express}
@@ -8,7 +9,8 @@ const Routes = require('./routing/routes');
  */
 const bootstrapExpress = () => {
     let app = express();
-
+    app.use(logger);
+    
     let routeConfig = new Routes();
     routeConfig.config(app);
     

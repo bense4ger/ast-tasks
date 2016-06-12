@@ -24,6 +24,21 @@
             "method": "get",
             "pattern": "/error",
             "handler": "errorHandler"
+        },
+        {
+            "method": "get",
+            "pattern": "/mongothing/:id",
+            "handler": "mongoGet"
+        },
+        {
+            "method": "post",
+            "pattern": "/mongothing",
+            "handler": "mongoInsert"
+        },
+        {
+            "method": "delete",
+            "pattern": "/mongothing/:id",
+            "handler": "mongoDelete"
         }
     ]
 }

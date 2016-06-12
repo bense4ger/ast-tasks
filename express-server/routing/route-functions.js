@@ -1,5 +1,8 @@
 "use strict";
 const _ = require('underscore');
+const ThingService = require('../services/thing-service');
+
+const service = new ThingService();
 
 /**
  * @description Simple in memory store of things
@@ -30,6 +33,18 @@ const newId = () => {
  */
 const idPresent = (req) => {
     return req.params.id && parseInt(req.params.id);
+}
+
+/**
+ * @function mongoSuccess
+ * @param {Object} data
+ * @param {Express.response} res
+ * @description Simple helper which responds to a successful MongoDB request.
+ */
+const mongoSuccess = (data, res) => {
+    res.type('json');
+    res.send(data);
+    res.end();
 }
 
 module.exports = {
@@ -93,5 +108,52 @@ module.exports = {
     },
     errorHandler: (req, res, next) => {
         throw new Error('This will always happen');
+    },
+    mongoGet: (req, res, next) => {
+        if(idPresent(req)){
+            service.get(req.params.id)
+                .then((data) => {
+                    mongoSuccess(data, res);
+                    res.next();
+
+                })
+                .catch((err) => {
+                    throw err;
+                });
+        }
+        else{
+            res.sendStatus(400);
+            res.end();
+            next();
+        }
+    },
+    mongoInsert: (req, res, next) => {
+        if(req.body.thing){
+            service.insert(req.body.thing.id, req.body.thing.name)
+                .then((data) => {
+                    mongoSuccess(data, res);
+                    res.next();
+                })
+                .catch((err) => {
+                    throw err;
+                });
+        }
+        else{
+            res.sendStatus(400);
+            res.end();
+            next();
+        }
+    },
+    mongoDelete: (req, res, next) => {
+        if(idPresent(req)){
+            service.delete(req.params.id)
+                .then((data) => {
+                    mongoSuccess(data, res);
+                    res.next();
+                })
+                .catch((err) => {
+                    throw err;
+                });
+        }
     }
 }

@@ -8,6 +8,7 @@
     "commander": "^2.9.0",
     "express": "^4.13.4",
     "method-override": "^2.3.6",
+    "mongoose": "^4.4.20",
     "underscore": "^1.8.3"
   },
   "devDependencies": {},

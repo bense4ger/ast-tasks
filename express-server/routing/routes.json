@@ -39,6 +39,11 @@
             "method": "delete",
             "pattern": "/mongothing/:id",
             "handler": "mongoDelete"
+        },
+        {
+            "method": "get",
+            "pattern": "/os",
+            "handler": "osInfoHandler"
         }
     ]
 }

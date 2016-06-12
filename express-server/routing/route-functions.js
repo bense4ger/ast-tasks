@@ -1,6 +1,7 @@
 "use strict";
 const _ = require('underscore');
 const ThingService = require('../services/thing-service');
+const osInfo = require('../logic/os-info');
 
 const service = new ThingService();
 
@@ -155,5 +156,11 @@ module.exports = {
                     throw err;
                 });
         }
+    },
+    osInfoHandler: (req, res, next) => {
+        res.type('json');
+        res.send(osInfo());
+        res.end()
+        next();
     }
 }

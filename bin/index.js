@@ -16,7 +16,8 @@ if(prog.N){
 }
 
 if(prog.E){
-    throw new Error('Not implemented');
+    const expressServer = require('../express-server/server');
+    expressServer().listen(PORT, listening);
 }
 
 if(!prog.N && !prog.E){

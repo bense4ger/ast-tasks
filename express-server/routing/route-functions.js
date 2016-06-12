@@ -3,8 +3,10 @@ const _ = require('underscore');
 const ThingService = require('../services/thing-service');
 const osInfo = require('../logic/os-info');
 const async = require('../logic/async');
+const CustomEvents = require('../logic/custom-events');
 
 const service = new ThingService();
+const events = new CustomEvents();
 
 /**
  * @description Simple in memory store of things
@@ -184,5 +186,17 @@ module.exports = {
             res.sendStatus(400);
             res.end();
         }
+    },
+    eventHandler: (req, res, next) => {
+        events.trigger('foo');
+        res.sendStatus(200);
+        res.end();
+        next();
+    },
+    eventOffHandler: (req, res, next) => {
+        events.unbindEvents();
+        res.sendStatus(200);
+        res.end();
+        next();
     }
 }

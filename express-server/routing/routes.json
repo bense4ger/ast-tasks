@@ -49,6 +49,16 @@
             "method": "get",
             "pattern": "/async/:type",
             "handler": "asyncHandler"
+        },
+        {
+            "method": "get",
+            "pattern": "/event/",
+            "handler": "eventHandler"
+        },
+        {
+            "method": "get",
+            "pattern": "/event/off",
+            "handler": "eventOffHandler"
         }
     ]
 }
